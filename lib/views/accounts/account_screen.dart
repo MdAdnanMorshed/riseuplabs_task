@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:test_assignment/controllers/domain_controller.dart';
 import 'package:test_assignment/models/domain_list_model.dart';
 
-class DomainScreen extends StatelessWidget {
+class AccountScreen extends StatelessWidget {
   final DomainController _domainController = Get.put(DomainController());
 
   @override
@@ -11,7 +11,7 @@ class DomainScreen extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          title: Text('Domains'),
+          title: Text('Account List '),
         ),
         body: Obx(() {
           if (_domainController.domainDataLoaded.value == false) {
@@ -27,16 +27,18 @@ class DomainScreen extends StatelessWidget {
                 itemCount: _domainController.domainList.length,
                 itemBuilder: (context, index) {
                   HydraMember domain = _domainController.domainList[index];
-                  return buildDomainUI(domain);
+                  return buildAccountUI(domain);
                 });
           }
         }),
+        floatingActionButton: FloatingActionButton(child: createAccount(),),
       ),
+
     );
   }
 
-  ///domain list UI
-  Widget buildDomainUI(HydraMember data) {
+  ///account list UI
+  Widget buildAccountUI(HydraMember data) {
     return Card(
       elevation: 3,
       child: Container(
@@ -44,12 +46,24 @@ class DomainScreen extends StatelessWidget {
           children: <Widget>[
             ListTile(
               onTap: () {},
-              title: Text('Domain Name :' + data.domain ?? 'no domain'),
+              title: Text('domain Name :' + data.domain ?? 'no domain'),
               subtitle: Text('date:' + data.createdAt),
               trailing: Text('isActive:' + data.isActive.toString()),
             ),
           ],
         ),
+      ),
+    );
+  }
+
+  /// create account  FAB
+  Widget createAccount() {
+    return InkWell(
+      onTap: () {
+        /// todo list
+      },
+      child: Icon(
+        Icons.add,
       ),
     );
   }

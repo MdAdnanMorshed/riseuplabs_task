@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:test_assignment/views/accounts/account_screen.dart';
 
+import 'views/authentication/login_screen.dart';
 import 'views/domain_screen.dart';
 
 void main() {
@@ -15,7 +17,8 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: DomainScreen(),
+      home: LoginScreen()
+      //DomainScreen(),
     );
   }
 }

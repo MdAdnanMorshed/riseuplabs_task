@@ -30,4 +30,13 @@ class RestApiRepository extends GetConnect {
     return [];
   }
 
+  /// login
+  Future<bool> login(Map<String,dynamic> loginBody)async{
+    bool isLogin=true;
+
+
+    return isLogin;
+  }
+
+
 }
