@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:test_assignment/repositries/rest_api.dart';
 import 'package:test_assignment/views/authentication/create_account_screen.dart';
 import 'package:test_assignment/views/common_widgets/TextFieldContainerWidget.dart';
+import 'package:test_assignment/views/domain_screen.dart';
 
 class LoginScreen extends StatelessWidget {
   @override
@@ -25,10 +26,10 @@ class LoginPageBody extends StatefulWidget {
 }
 
 class _LoginPageBodyState extends State<LoginPageBody> {
-  var _phoneController = TextEditingController();
+  var _mailController = TextEditingController();
   var _passwordController = TextEditingController();
   var _formKey = GlobalKey<FormState>();
-  String _phone = '';
+  String _mail = '';
   String _password = '';
   bool _obscureTextNewPass = true;
   IconData _iconVisibleNewPass = Icons.visibility_off;
@@ -56,11 +57,11 @@ class _LoginPageBodyState extends State<LoginPageBody> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  SizedBox(height: size.height / 2),
+                  SizedBox(height: size.width / 2),
                   Text('Login'),
-                  SizedBox(height: size.width / 10),
+                  SizedBox(height: size.width / 5),
                   _textField(
-                      controller: _phoneController,
+                      controller: _mailController,
                       icon: Icons.email,
                       isObsecureText: false,
                       maxlines: 1,
@@ -68,7 +69,7 @@ class _LoginPageBodyState extends State<LoginPageBody> {
                       hint: 'Enter Address',
                       forr: 'mail',
                       isEmptyMsg: 'Enter your mail address ',
-                      keyboardType: TextInputType.phone),
+                      keyboardType: TextInputType.text),
                   SizedBox(
                     height: 10,
                   ),
@@ -94,9 +95,16 @@ class _LoginPageBodyState extends State<LoginPageBody> {
                     },
                     child: Text('Login'),
                   ),
-                  Text('Register here'),
                   SizedBox(
-                    height: size.height * 0.15,
+                    height: size.width * 0.15,
+                  ),
+                  InkWell(
+                      onTap: (){
+                        Get.to(CreateAccountScreen());
+                      },
+                      child: Text('Create an account here')),
+                  SizedBox(
+                    height: size.width * 0.15,
                   ),
                 ],
               ),
@@ -165,23 +173,29 @@ class _LoginPageBodyState extends State<LoginPageBody> {
   void _signInUser(context) {
     if (_formKey.currentState.validate()) {
       _formKey.currentState.save();
-      Map<String, dynamic> loginMap = {
-        "address": "123@gmail.com",
+      /*
+      "address": "adnan@pussport.com",
         "password": "12345678"
+       */
+      Map<String, dynamic> loginMap = {
+        "address": _mailController.text,
+        "password": _passwordController.text
       };
+      print('loginMap'+loginMap.toString());
       RestApiRepository().login(loginMap).then((value) {
         if (value) {
-          print('Login SuccessFul');
+          Get.to(DomainScreen());
+          Get.snackbar('Success', 'Login has successful!');
         } else {
-          print('Not Login Successful');
+          Get.snackbar('Error ', 'Login has wrong!');
         }
       });
     }
   }
 
   _save(String newValue, forr) {
-    if (forr == 'phone') {
-      return _phone = newValue;
+    if (forr == 'mail') {
+      return _mail = newValue;
     }
     if (forr == 'pass') {
       return _password = newValue;

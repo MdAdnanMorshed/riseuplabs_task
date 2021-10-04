@@ -6,6 +6,8 @@ import 'package:get/get.dart';
 import 'package:test_assignment/repositries/rest_api.dart';
 import 'package:test_assignment/views/common_widgets/TextFieldContainerWidget.dart';
 
+import 'login_screen.dart';
+
 class CreateAccountScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -27,7 +29,7 @@ class CreateAccount extends StatefulWidget {
 }
 
 class _CreateAccountState extends State<CreateAccount> {
-  var _phoneController = TextEditingController();
+  var _mailAddressController = TextEditingController();
   var _passwordController = TextEditingController();
   var _formKey = GlobalKey<FormState>();
   String _phone = '';
@@ -58,19 +60,19 @@ class _CreateAccountState extends State<CreateAccount> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  SizedBox(height: size.height / 2),
+                  SizedBox(height: size.width / 2),
                   Text('Create Account '),
                   SizedBox(height: size.width / 10),
                   _textField(
-                      controller: _phoneController,
+                      controller: _mailAddressController,
                       icon: Icons.email,
                       isObsecureText: false,
                       maxlines: 1,
                       isHidTap: false,
-                      hint: 'Enter Address',
+                      hint: 'someone@pussport.com',
                       forr: 'mail',
                       isEmptyMsg: 'Enter your mail address ',
-                      keyboardType: TextInputType.phone),
+                      keyboardType: TextInputType.text),
                   SizedBox(
                     height: 10,
                   ),
@@ -92,11 +94,18 @@ class _CreateAccountState extends State<CreateAccount> {
                   ),
                   ElevatedButton(
                     onPressed: () {
-                      _signInUser(context);
+                      _createAccount(context);
                     },
-                    child: Text('Login'),
+                    child: Text('Register '),
                   ),
-                  Text('Register here'),
+                  SizedBox(
+                    height: size.width * 0.15,
+                  ),
+                  InkWell(
+                      onTap: (){
+                        Get.to(LoginScreen());
+                      },
+                      child: Text('Already Have an Account? Login Now')),
                   SizedBox(
                     height: size.height * 0.15,
                   ),
@@ -164,18 +173,19 @@ class _CreateAccountState extends State<CreateAccount> {
     return null;
   }
 
-  void _signInUser(context) {
+  void _createAccount(context) {
     if (_formKey.currentState.validate()) {
       _formKey.currentState.save();
-      Map<String, dynamic> loginMap = {
-        "address": "123@gmail.com",
-        "password": "12345678"
+      Map<String, dynamic> bodyMap = {
+        "address": _mailAddressController.text,
+        "password": _passwordController.text
       };
-      RestApiRepository().login(loginMap).then((value) {
+      print('bodyMap'+bodyMap.toString());
+      RestApiRepository().createAccount(bodyMap).then((value) {
         if (value) {
-          print('Login SuccessFul');
+          Get.snackbar('Success', 'Register has successFul');
         } else {
-          print('Not Login Successful');
+          Get.snackbar('Error', 'Register has error');
         }
       });
     }

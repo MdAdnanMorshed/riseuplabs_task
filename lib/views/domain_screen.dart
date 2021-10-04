@@ -1,15 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:test_assignment/bd_helpers/local_store_token.dart';
 import 'package:test_assignment/controllers/domain_controller.dart';
 import 'package:test_assignment/models/domain_list_model.dart';
+import 'package:test_assignment/views/authentication/login_screen.dart';
+import 'package:test_assignment/views/contact_us.dart';
+
+import 'accounts/account_screen.dart';
+import 'notifications/notification_screen.dart';
 
 class DomainScreen extends StatelessWidget {
   final DomainController _domainController = Get.put(DomainController());
 
   @override
   Widget build(BuildContext context) {
+
+    print('token :'+LocalStoreToken.object.getToken());
     return SafeArea(
       child: Scaffold(
+        drawer:  _buildDrawer(),
         appBar: AppBar(
           title: Text('Domains'),
         ),
@@ -31,6 +40,72 @@ class DomainScreen extends StatelessWidget {
                 });
           }
         }),
+      ),
+    );
+  }
+
+  Widget _buildDrawer(){
+    return Drawer(
+      child: ListView(
+        children: [
+          DrawerHeader(
+            child: Stack(
+              children: [
+                Positioned(
+                  bottom: 8.0,
+                  left: 4.0,
+                  child: Text(
+                    "User Address ",
+                    style: TextStyle(color: Colors.white, fontSize: 20),
+                  ),
+                )
+              ],
+            ),
+            decoration: BoxDecoration(
+              color: Colors.red,
+              image: DecorationImage(
+                image: NetworkImage(
+                  "https://appmaking.co/wp-content/uploads/2021/08/android-drawer-bg.jpeg",
+                ),
+                fit: BoxFit.fill,
+              ),
+            ),
+          ),
+          ListTile(
+            leading: Icon(Icons.home),
+            title: Text("Home"),
+            onTap: () {},
+          ),
+          ListTile(
+            leading: Icon(Icons.account_box),
+            title: Text("Login/Register"),
+            onTap: () {
+              Get.to(LoginScreen());
+            },
+          ),
+          ListTile(
+            leading: Icon(Icons.account_box),
+            title: Text("Account List"),
+            onTap: () {
+
+              Get.to(AccountScreen());
+            },
+          ),
+          ListTile(
+            leading: Icon(Icons.contact_mail),
+            title: Text("Notification List"),
+            onTap: () {
+              Get.to(NotificationScreen());
+            },
+          ),
+          ListTile(
+            leading: Icon(Icons.contact_mail),
+            title: Text("Contact"),
+            onTap: () {
+               Get.to(ContactUs());
+            },
+          )
+        ],
       ),
     );
   }
