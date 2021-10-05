@@ -21,7 +21,7 @@ class ApiUrl {
    */
 
   ///----------------- Messages -----------------------
-  static String messageListGETAPI = '/messages?page=1';
+  static String messageListGETAPI = '/messages';
   static String messagesBYIdGETAPI = baseUrl + '/messages/'; //by id
   static String messagesBYIdDELETEAPI = baseUrl + '/messages/'; //by id
   static String messagesBYIdUPDATEAPI = baseUrl+'/messages/'; //by id
