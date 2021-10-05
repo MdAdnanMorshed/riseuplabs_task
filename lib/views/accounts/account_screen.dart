@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:test_assignment/controllers/accounts_controller.dart';
 import 'package:test_assignment/controllers/domain_controller.dart';
+import 'package:test_assignment/models/account_list_model.dart';
 import 'package:test_assignment/models/domain_list_model.dart';
 
 class AccountScreen extends StatelessWidget {
-  final DomainController _domainController = Get.put(DomainController());
+  final AccountController _accountController = Get.put(AccountController());
 
   @override
   Widget build(BuildContext context) {
@@ -13,22 +15,18 @@ class AccountScreen extends StatelessWidget {
         appBar: AppBar(
           title: Text('Account List '),
         ),
-        body: Obx(() {
-          if (_domainController.domainDataLoaded.value == false) {
+        body:
+        Obx(() {
+          if (_accountController.accountDataLoaded.value == false) {
             return Center(
               child: CircularProgressIndicator(),
             );
-          } else if (_domainController.domainList.isEmpty &&
-              _domainController.domainDataLoaded.value == true) {
+          } else if (_accountController.accountInfo.isBlank &&
+              _accountController.accountDataLoaded.value == true) {
             return Center(child: Text('No Found Data'));
           } else {
-            return ListView.builder(
-                shrinkWrap: true,
-                itemCount: _domainController.domainList.length,
-                itemBuilder: (context, index) {
-                  HydraMember domain = _domainController.domainList[index];
-                  return buildAccountUI(domain);
-                });
+            AccountListModel account= _accountController.accountInfo.value;
+            return    buildAccountUI(account);
           }
         }),
         floatingActionButton: FloatingActionButton(child: createAccount(),),
@@ -37,8 +35,8 @@ class AccountScreen extends StatelessWidget {
     );
   }
 
-  ///account list UI
-  Widget buildAccountUI(HydraMember data) {
+  /// account list UI
+  Widget buildAccountUI(AccountListModel data) {
     return Card(
       elevation: 3,
       child: Container(
@@ -46,9 +44,9 @@ class AccountScreen extends StatelessWidget {
           children: <Widget>[
             ListTile(
               onTap: () {},
-              title: Text('domain Name :' + data.domain ?? 'no domain'),
-              subtitle: Text('date:' + data.createdAt),
-              trailing: Text('isActive:' + data.isActive.toString()),
+              title: Text('Id  :' + data.id ?? 'no domain'),
+              subtitle: Text(' Address:' + data.address),
+              trailing: Text('Status :' + data.isDisabled.toString()),
             ),
           ],
         ),

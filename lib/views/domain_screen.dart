@@ -7,7 +7,8 @@ import 'package:test_assignment/views/authentication/login_screen.dart';
 import 'package:test_assignment/views/contact_us.dart';
 
 import 'accounts/account_screen.dart';
-import 'notifications/notification_screen.dart';
+import 'messages/message_screen.dart';
+
 
 class DomainScreen extends StatelessWidget {
   final DomainController _domainController = Get.put(DomainController());
@@ -15,7 +16,6 @@ class DomainScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    print('token :'+LocalStoreToken.object.getToken());
     return SafeArea(
       child: Scaffold(
         drawer:  _buildDrawer(),
@@ -93,9 +93,9 @@ class DomainScreen extends StatelessWidget {
           ),
           ListTile(
             leading: Icon(Icons.contact_mail),
-            title: Text("Notification List"),
+            title: Text("Message List"),
             onTap: () {
-              Get.to(NotificationScreen());
+              Get.to(MessageScreen());
             },
           ),
           ListTile(
