@@ -19,9 +19,7 @@
 
 # Screenshot
 <img src="assets/github_images/0.jpg" width="20%">
-<img src="assets/github_images/1.jpg" width="20%">
 <img src="assets/github_images/2.jpg" width="20%">
-<img src="assets/github_images/3.jpg" width="20%">
 <img src="assets/github_images/4.jpg" width="20%">
 <img src="assets/github_images/5.jpg" width="20%">
 
