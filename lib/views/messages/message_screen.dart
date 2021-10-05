@@ -19,10 +19,12 @@ class MessageScreen extends StatelessWidget {
             return Center(
               child: CircularProgressIndicator(),
             );
-          } else if (_messageController.message.isBlank &&
+          } else if (_messageController.message.value==null &&
               _messageController.messageDataLoaded.value == true) {
             return Center(child: Text('No Found Data'));
-          } else {
+          }
+
+          else {
             DomainListModel message = _messageController.message.value;
             return buildMessageUI(message);
           }

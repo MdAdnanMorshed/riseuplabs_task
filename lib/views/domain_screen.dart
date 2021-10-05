@@ -103,8 +103,10 @@ class DomainScreen extends StatelessWidget {
             leading: Icon(Icons.lock),
             title: Text("Logout"),
             onTap: () {
-              Get.to(LoginScreen());
-            },
+
+              Get.offAll(LoginPageBody());
+
+              },
           ),
           ListTile(
             leading: Icon(Icons.contact_mail),

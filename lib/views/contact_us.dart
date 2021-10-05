@@ -7,7 +7,13 @@ class ContactUs extends StatelessWidget {
       child: Scaffold(
         body: Center(
           child: Container(
-            child: Text('My Name is adnan morshed'),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text('My Name is adnan morshed'),
+                Text('adnanmorshed118@gmail.com'),
+              ],
+            ),
           ),
         ),
       ),

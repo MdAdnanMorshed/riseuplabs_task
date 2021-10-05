@@ -50,6 +50,7 @@ class _LoginPageBodyState extends State<LoginPageBody> {
     Size size = Get.size;
     return SafeArea(
       child: Scaffold(
+        backgroundColor: Colors.white,
         body: SingleChildScrollView(
           child: Center(
             child: Form(
@@ -57,9 +58,11 @@ class _LoginPageBodyState extends State<LoginPageBody> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  SizedBox(height: size.width / 2),
+
+
+                  Image.asset('assets/app_images/logo.jpg'),
+
                   Text('Login'),
-                  SizedBox(height: size.width / 5),
                   _textField(
                       controller: _mailController,
                       icon: Icons.email,
