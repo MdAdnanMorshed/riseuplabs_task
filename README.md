@@ -1,16 +1,31 @@
-# test_assignment
+#  Test Assignment
 
-A new Flutter application.
 
-## Getting Started
+* Query The Domain List [ /domains ]
+> sampledomain.com
 
-This project is a starting point for a Flutter application.
+* Create an Account [ /accounts ]
+> someone@sampledomain.com
 
-A few resources to get you started if this is your first Flutter project:
+* Login [ /token ]
+> Get JWT Token [ Bearer ]
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+* Send an E-Mail to the created account [ from your e-mail ]
+> you@gmail.com -> someone@sampledomain.com
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+* Check inbox [ /messages ]
+> New mail from you@gmail.com
+
+
+# Screenshot
+<img src="assets/github_images/ok.jpg" width="33%">
+
+# References
+
+
+# Find Me On
+- Facebook: 
+- YouTube: 
+- Website: 
+- Number: +880 1831679008
+- Email: adnanmorshed118@gmail.com
