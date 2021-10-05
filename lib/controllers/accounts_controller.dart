@@ -1,8 +1,11 @@
 import 'package:get/get.dart';
+import 'package:test_assignment/models/account_list_model.dart';
+import 'package:test_assignment/repositries/rest_api.dart';
 
 class AccountController extends GetxController{
- /* RxList<HydraMember> accountList = <HydraMember>[].obs;
-  RxBool domainDataLoaded = false.obs;
+
+  Rx<AccountListModel> accountInfo = AccountListModel().obs;
+  RxBool accountDataLoaded = false.obs;
 
   @override
   void onInit() {
@@ -11,10 +14,8 @@ class AccountController extends GetxController{
   }
 
   void domains() async{
-    var response =await RestApiRepository().getDomains();
-    accountList.clear();
-    accountList.addAll(response);
-    domainDataLoaded.value = true;
-  }*/
-
+     var account =await RestApiRepository().getAccounts();
+     accountInfo.value=account;
+     accountDataLoaded.value = true;
+  }
 }
