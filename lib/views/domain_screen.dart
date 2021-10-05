@@ -76,13 +76,7 @@ class DomainScreen extends StatelessWidget {
             title: Text("Home"),
             onTap: () {},
           ),
-          ListTile(
-            leading: Icon(Icons.account_box),
-            title: Text("Login/Register"),
-            onTap: () {
-              Get.to(LoginScreen());
-            },
-          ),
+
           ListTile(
             leading: Icon(Icons.account_box),
             title: Text("Account List"),
@@ -98,6 +92,20 @@ class DomainScreen extends StatelessWidget {
               Get.to(MessageScreen());
             },
           ),
+          LocalStoreToken.object.getToken()==null?
+          ListTile(
+            leading: Icon(Icons.login),
+            title: Text("Login/Register"),
+            onTap: () {
+              Get.to(LoginScreen());
+            },
+          ):ListTile(
+            leading: Icon(Icons.lock),
+            title: Text("Logout"),
+            onTap: () {
+              Get.to(LoginScreen());
+            },
+          ),
           ListTile(
             leading: Icon(Icons.contact_mail),
             title: Text("Contact"),
@@ -109,7 +117,6 @@ class DomainScreen extends StatelessWidget {
       ),
     );
   }
-
   ///domain list UI
   Widget buildDomainUI(HydraMember data) {
     return Card(

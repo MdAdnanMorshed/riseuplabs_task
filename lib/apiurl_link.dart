@@ -2,7 +2,6 @@ class ApiUrl {
   static String globalUrl = '';
   static String baseUrl = 'https://api.mail.tm';
 
-
   ///--------- Domain----------------------
   static String domainListGETAPI = baseUrl + 'domains?page=1';
   static String domainListByIdGETAPI = baseUrl + '/domains/'; //id 613f72dc2a2501052c66504d

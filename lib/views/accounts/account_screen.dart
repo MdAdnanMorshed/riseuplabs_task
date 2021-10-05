@@ -5,6 +5,8 @@ import 'package:test_assignment/controllers/domain_controller.dart';
 import 'package:test_assignment/models/account_list_model.dart';
 import 'package:test_assignment/models/domain_list_model.dart';
 
+import 'create_account_screen.dart';
+
 class AccountScreen extends StatelessWidget {
   final AccountController _accountController = Get.put(AccountController());
 
@@ -58,6 +60,7 @@ class AccountScreen extends StatelessWidget {
   Widget createAccount() {
     return InkWell(
       onTap: () {
+        Get.to(CreateAccountScreen());
         /// todo list
       },
       child: Icon(
