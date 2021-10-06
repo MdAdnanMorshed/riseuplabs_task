@@ -24,8 +24,8 @@
 
 
 # Screenshot
-<img src="assets/github_images/0.jpg" width="20%"> <img src="assets/github_images/2.jpg" width="20%"> <img src="assets/github_images/4.jpg" width="20%">
-<img src="assets/github_images/5.jpg" width="20%"> <img src="assets/github_images/06.jpg" width="20%">
+<img src="assets/github_images/0.jpg" width="30%"> <img src="assets/github_images/2.jpg" width="30%"> <img src="assets/github_images/4.jpg" width="30%">
+<img src="assets/github_images/5.jpg" width="40%"> <img src="assets/github_images/06.jpg" width="40%">
 
 # References
 
